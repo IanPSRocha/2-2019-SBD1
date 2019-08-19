@@ -2,19 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct cadastro{
-    char nome[500];
-    long int cpf;
-    char carro[500];
-    int ano;
-    char placa[8];
-    struct cadastro *prox;
-}cadastro;
+struct carro{
+    char modelo[20];
+    long int cpf_dono;
+    char marca[20];
+    char cor[10];
+};
+
+struct proprietario{
+    char nome[20];
+    char cpf[11];
+    long int cep;
+};
 
 FILE *fp;
 char arquivo[] = "cadastro.txt";
 int n;
-cadastro *cabeca;
+proprietario *cabeca;
+carro *head;
 
 void criaStruct();
 void abrirArquivo();
@@ -113,6 +118,7 @@ void exibirCarros(){
     cadastro *aux;
     aux = cabeca;
     for(aux; aux->prox != NULL; aux = aux->prox){
+        printf("to no for\n");
         printf("Proprietário: %s\n", aux->nome);
         printf("CPF: %ld\n", aux->cpf);
         printf("Carro: %s\n", aux->carro);
@@ -141,27 +147,13 @@ void adicionarCarros(){
     scanf("%s", novocarro->placa);
 
     fprintf(fp, "%s\n", novocarro->nome);
-    fprintf(fp, "%d\n", novocarro->cpf);
+    fprintf(fp, "%ld\n", novocarro->cpf);
     fprintf(fp, "%s\n", novocarro->carro);
     fprintf(fp, "%d\n", novocarro->ano);
     fprintf(fp, "%s\n", novocarro->placa);
 
     printf("Cadastro Concluído!!\n");
 }
-
-// void apagarCarros(){
-//     char aux[500];
-//     cadastro *lixo;
-//     lixo = cabeca;
-//     printf("Digite o nome do carro que deseja apagar:\n");
-//     scanf("%s", aux);
-//     for(lixo; lixo->prox != NULL; lixo = lixo->prox){
-//         if(strcmp(aux, lixo->carro) == 0){
-
-//             free(lixo);
-//         }
-//     }
-// }
 
 void liberaStruct(){
     cadastro *aux2, *prox1;
