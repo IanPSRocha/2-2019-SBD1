@@ -1,0 +1,11 @@
+Nome: Ian
+CPF: 02513728122
+CEP: 72500413
+Modelo: Fiat
+CPF do Proprietario: 02513728122
+Marca: Uno
+Cor: 
+Modelo: Kwid
+CPF do Proprietario: 02513728122
+Marca: Renault
+Cor: 
